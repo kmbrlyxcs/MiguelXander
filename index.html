@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Philippines Mythical Creatures</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Inter:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      background: #090909;
+      color: #f1ece7;
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(8, 8, 8, 0.95);
+      border-bottom: 1px solid #292020;
+    }
+
+    .brand {
+      font-family: Cinzel, Georgia, serif;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .brand span {
+      color: #ed2638;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #d8d0ca;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ed2638;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: white;
+      background: transparent;
+      border: 1px solid #555;
+      padding: 7px 12px;
+      font-size: 20px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 7% 90px;
+      background:
+        linear-gradient(90deg, #050505 5%, rgba(5,5,5,.78) 55%, rgba(5,5,5,.3)),
+        linear-gradient(0deg, #090909, transparent 35%),
+        url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .eyebrow {
+      color: #ed2638;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      font-family: Cinzel, Georgia, serif;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 90px);
+      text-transform: uppercase;
+    }
+
+    h1 span {
+      display: block;
+      color: #ed2638;
+    }
+
+    .hero p {
+      color: #c8c0ba;
+      max-width: 580px;
+      margin: 25px 0 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 5px 8px 5px 0;
+      border: 1px solid #b51625;
+      background: #b51625;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: #ed2638;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: #aaa;
+    }
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin-bottom: 40px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 15px;
+    }
+
+    .section-head p {
+      color: #aaa19b;
+    }
+
+    .red-line {
+      width: 60px;
+      height: 3px;
+      background: #ed2638;
+      margin-bottom: 22px;
+    }
+
+    .creatures {
+      background: linear-gradient(#090909, #120a0b, #090909);
+    }
+
+    .creature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .creature-card {
+      background: #121211;
+      border: 1px solid #302526;
+      transition: .3s;
+      overflow: hidden;
+    }
+
+    .creature-card:hover {
+      transform: translateY(-6px);
+      border-color: #ed2638;
+    }
+
+    .creature-image {
+      height: 200px;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle, #501820, #171011 65%, #090909);
+      border-bottom: 1px solid #302526;
+    }
+
+    .creature-symbol {
+      font-size: 75px;
+      color: #e7deda;
+      text-shadow: 0 0 25px #b51625;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .tag {
+      color: #ff6671;
+      border: 1px solid #72232b;
+      display: inline-block;
+      padding: 3px 9px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .card-body h3 {
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .card-body p {
+      color: #aaa19b;
+      font-size: 14px;
+    }
+
+    .read-more {
+      display: inline-block;
+      margin-top: 17px;
+      color: #ed2638;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+      background: #11100f;
+      border-top: 1px solid #302526;
+      border-bottom: 1px solid #302526;
+    }
+
+    .legend-art {
+      min-height: 350px;
+      background:
+        linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.4)),
+        url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80")
+        center/cover;
+      filter: grayscale(70%);
+    }
+
+    .legend-copy h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 20px;
+    }
+
+    .legend-copy p {
+      color: #aaa19b;
+      margin-bottom: 15px;
+    }
+
+    .quote {
+      border-left: 3px solid #b51625;
+      background: #1c0b0d;
+      padding: 18px;
+      margin-top: 25px;
+      font-family: Georgia, serif;
+      font-style: italic;
+    }
+
+    .stories {
+      background: #090909;
+    }
+
+    .story-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .story {
+      background: #111;
+      border: 1px solid #302526;
+      padding: 25px;
+    }
+
+    .story .icon {
+      color: #ed2638;
+      font-size: 30px;
+    }
+
+    .story h3 {
+      margin: 12px 0;
+      font-size: 19px;
+    }
+
+    .story p {
+      color: #aaa19b;
+      font-size: 14px;
+    }
+
+    .about {
+      text-align: center;
+      background: radial-gradient(ellipse, #210c10, #090909 70%);
+    }
+
+    .about .section-head {
+      margin: 0 auto 25px;
+    }
+
+    .about p {
+      max-width: 750px;
+      margin: auto;
+      color: #bdb4ae;
+    }
+
+    footer {
+      padding: 28px 7%;
+      border-top: 1px solid #302526;
+      color: #aaa19b;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    footer a {
+      color: #ed2638;
+    }
+
+    @media (max-width: 900px) {
+      .creature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .legend {
+        grid-template-columns: 1fr;
+      }
+
+      .story-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        padding: 15px 5%;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 22px 6%;
+        background: #090909;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        padding: 125px 6% 80px;
+      }
+
+      section {
+        padding: 70px 6%;
+      }
+
+      .creature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .legend-art {
+        min-height: 250px;
+      }
+
+      footer {
+        padding: 25px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="nav">
+    <a href="#home" class="brand">PH<span>•</span>MYTHS</a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#creatures">Creatures</a>
+      <a href="#folklore">Folklore</a>
+      <a href="#stories">Dark Tales</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">Folklore • Fear • Filipino Legends</div>
+
+        <h1>Philippines
+          <span>Mythical Creatures</span>
+        </h1>
+
+        <p>
+          Enter a world where shadows whisper, old trees hide secrets,
+          and the creatures of Filipino folklore come alive after dark.
+          Discover the legends that have haunted stories for generations.
+        </p>
+
+        <a href="#creatures" class="btn">Enter the Unknown</a>
+        <a href="#folklore" class="btn btn-outline">Discover the Legends</a>
+      </div>
+    </section>
+
+    <section class="creatures" id="creatures">
+      <div class="section-head">
+        <div class="red-line"></div>
+        <div class="eyebrow">The Things in the Dark</div>
+        <h2>Meet the Creatures</h2>
+        <p>
+          Discover some of the best-known beings in Philippine folklore.
+          Their stories differ across regions and communities.
+        </p>
+      </div>
+
+      <div class="creature-grid">
+
+        <article class="creature-card">
+          <div class="creature-image">
+            <span class="creature-symbol">☾</span>
+          </div>
+          <div class="card-body">
+            <span class="tag">Shapeshifter</span>
+            <h3>Aswang</h3>
+            <p>
+              A feared figure in Philippine folklore, often described
+              as a shape-shifting monster that hunts under cover of darkness.
+            </p>
+            <a class="read-more" href="#stories">Read the Legend ↗</a>
+          </div>
+        </article>
+
+        <article class="creature-card">
+          <div class="creature-image">
+            <span class="creature-symbol">♆</span>
+          </div>
+          <div class="card-body">
+            <span class="tag">Night Stalker</span>
+            <h3>Manananggal</h3>
+            <p>
+              A terrifying creature said to separate its upper body
+              and take flight at night in search of prey.
+            </p>
+            <a class="read-more" href="#stories">Read the Legend ↗</a>
+          </div>
+        </article>
+
+        <article class="creature-card">
+          <div class="creature-image">
+            <span class="creature-symbol">♜</span>
+          </div>
+          <div class="card-body">
+            <span class="tag">Forest Spirit</span>
+            <h3>Kapre</h3>
+            <p>
+              A towering, hairy being often imagined sitting in old trees,
+              smoking a large cigar, and confusing travelers.
+            </p>
+            <a class="read-more" href="#folklore">Read the Legend ↗</a>
+          </div>
+        </article>
+
+        <article class="creature-card">
+          <div class="creature-image">
+            <span class="creature-symbol">✧</span>
+          </div>
+          <div class="card-body">
+            <span class="tag">Nature Spirit</span>
+            <h3>Diwata</h3>
+            <p>
+              Powerful nature spirits associated with forests and mountains.
+              Depending on the tradition, they may protect or punish.
+            </p>
+            <a class="read-more" href="#folklore">Read the Legend ↗</a>
+          </div>
+        </article>
+
+        <article class="creature-card">
+          <div class="creature-image">
+            <span class="creature-symbol">☠</span>
+          </div>
+          <div class="card-body">
+            <span class="tag">Restless Spirit</span>
+            <h3>White Lady</h3>
+            <p>
+              A ghostly woman said to appear along lonely roads
+              and quiet places. Her story changes from town to town.
+            </p>
+            <a class="read-more" href="#stories">Read the Legend ↗</a>
+          </div>
+        </article>
+
+        <article class="creature-card">
+          <div class="creature-image">
+            <span class="creature-symbol">◈</span>
+          </div>
+          <div class="card-body">
+            <span class="tag">Forest Dweller</span>
+            <h3>Tikbalang</h3>
+            <p>
+              A creature often pictured with a human-like body and
+              a horse's head, known for leading travelers astray.
+            </p>
+            <a class="read-more" href="#folklore">Read the Legend ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="legend" id="folklore">
+      <div class="legend-art" role="img"
+        aria-label="Mysterious, dark landscape"></div>
+
+      <div class="legend-copy">
+        <div class="eyebrow">Stories Passed Through Generations</div>
+        <h2>Where the Old Legends Live</h2>
+
+        <p>
+          Philippine folklore reflects the country's many cultures,
+          languages, and local traditions. Stories about spirits and
+          mysterious beings were shared to explain the unknown,
+          teach lessons, and remind people to respect nature.
+        </p>
+
+        <p>
+          There is no single version of every creature. Details differ
+          by region, storyteller, and family tradition.
+        </p>
+
+        <div class="quote">
+          "When the forest grows quiet, listen carefully.
+          Not every sound belongs to the living."
+        </div>
+      </div>
+    </section>
+
+    <section class="stories" id="stories">
+      <div class="section-head">
+        <div class="red-line"></div>
+        <div class="eyebrow">After the Sun Goes Down</div>
+        <h2>Rules for the Night</h2>
+        <p>
+          Folklore-inspired reminders from stories about mysterious
+          places and supernatural beings.
+        </p>
+      </div>
+
+      <div class="story-list">
+        <article class="story">
+          <div class="icon">☽</div>
+          <h3>Respect the Old Trees</h3>
+          <p>
+            Some stories warn travelers not to disturb ancient trees
+            or the unseen beings believed to dwell there.
+          </p>
+        </article>
+
+        <article class="story">
+          <div class="icon">⌁</div>
+          <h3>Stay on the Path</h3>
+          <p>
+            Legends of forest tricksters remind listeners that
+            wandering into unfamiliar places can lead to danger.
+          </p>
+        </article>
+
+        <article class="story">
+          <div class="icon">✦</div>
+          <h3>Keep the Stories Alive</h3>
+          <p>
+            Ask elders about local legends and learn how stories
+            differ between communities.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="section-head">
+        <div class="eyebrow">Beyond the Fear</div>
+        <h2>A Dark Window into Filipino Folklore</h2>
+      </div>
+
+      <p>
+        This website introduces selected Philippine mythical creatures
+        and supernatural legends. It is designed for learning and
+        storytelling while respecting the different communities that
+        keep these traditions alive. Beliefs and stories vary by region.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <strong>PH•MYTHS</strong> — Tales from the shadows of the Philippines
+    </div>
+    <div>
+      Folklore-inspired educational website ·
+      <a href="#home">Back to Top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+  </script>
+
+</body>
+</html>
